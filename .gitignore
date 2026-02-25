@@ -9,7 +9,6 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-
 # testing
 /coverage
 
@@ -19,6 +18,7 @@
 
 # production
 /build
+starter-for-nextjs
 
 # misc
 .DS_Store
