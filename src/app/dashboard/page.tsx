@@ -18,8 +18,11 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { toast } from "@/store/Toast";
+import { useAuthStore } from "@/store/Auth";
+import slugify from "@/utils/slugify";
 
 export default function DashboardPage() {
+  const { user } = useAuthStore();
   const [activeTab, setActiveTab] = React.useState<"analytics" | "moderation">("analytics");
   const [reports, setReports] = React.useState([
     { id: 1, type: "Question", title: "How to exit Vim?", reason: "Duplicate post", status: "pending", author: "johndoe" },
@@ -118,6 +121,17 @@ export default function DashboardPage() {
               <IconKeyboard className="w-4 h-4 text-indigo-400 animate-pulse" />
               <span>Press [?]</span>
             </button>
+
+            {user && (
+              <Link
+                href={`/users/${user.$id}/${slugify(user.name)}/votes`}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-xs font-mono text-gray-400 hover:text-white transition-all cursor-pointer"
+                title="View My Votes"
+              >
+                <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+                <span>My Votes</span>
+              </Link>
+            )}
 
             <div className="flex gap-1 bg-white/5 border border-white/10 p-1 rounded-lg">
               <button 
