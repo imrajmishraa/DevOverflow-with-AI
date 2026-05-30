@@ -102,10 +102,10 @@ export const FloatingNav = ({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/80 px-2 py-1.5 shadow-lg shadow-black/10 backdrop-blur-md dark:border-white/10 dark:bg-black/50">
+        <div className="flex items-center justify-center gap-1 sm:gap-2 rounded-full border border-white/10 bg-white/80 px-1.5 sm:px-3 py-1 sm:py-1.5 shadow-lg shadow-black/10 backdrop-blur-md dark:border-white/10 dark:bg-black/50">
           
           {/* logo / app initials */}
-          <a href="/" className="px-2 font-black text-sm tracking-widest text-indigo-400">
+          <a href="/" className="px-1.5 sm:px-2 font-black text-xs sm:text-sm tracking-widest text-indigo-400">
             D//O
           </a>
 
@@ -113,13 +113,13 @@ export const FloatingNav = ({
           <div className="h-4 w-px bg-neutral-200 dark:bg-white/10" />
 
           {/* Nav items container */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5 sm:gap-1">
             {navItems.map((navItem, idx: number) => (
               <a
                 key={`link-${idx}`}
                 href={navItem.link}
                 className={cn(
-                  "relative flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
+                  "relative flex items-center gap-1 rounded-full px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-white/10 dark:hover:text-white"
                 )}
               >
                 <span className="block sm:hidden">{navItem.icon}</span>
@@ -131,21 +131,21 @@ export const FloatingNav = ({
           {/* Search trigger button */}
           <button 
             onClick={onOpenCommandPalette}
-            className="flex items-center gap-1 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-xs text-neutral-400 hover:bg-white/10 hover:text-white transition-all cursor-pointer"
+            className="flex items-center gap-1 rounded-full bg-white/5 border border-white/10 px-2 sm:px-3 py-1 sm:py-1.5 text-xs text-neutral-400 hover:bg-white/10 hover:text-white transition-all cursor-pointer"
             title="Open Command Palette"
           >
             <IconSearch className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline font-mono">⌘K</span>
+            <span className="hidden sm:inline font-mono text-[10px]">⌘K</span>
           </button>
 
           {/* Futuristic Theme Switcher */}
           <button 
             onClick={toggleTheme}
-            className="flex items-center gap-1 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-xs text-neutral-400 hover:bg-white/10 hover:text-white transition-all cursor-pointer group"
+            className="flex items-center gap-1 rounded-full bg-white/5 border border-white/10 px-2 sm:px-3 py-1 sm:py-1.5 text-xs text-neutral-400 hover:bg-white/10 hover:text-white transition-all cursor-pointer group"
             title="Toggle Accent Theme"
           >
             <IconColorSwatch className="w-3.5 h-3.5 text-indigo-400 group-hover:rotate-45 transition-transform duration-300" />
-            <span className="hidden sm:inline font-mono text-[10px] uppercase font-bold tracking-wider">{theme}</span>
+            <span className="hidden sm:inline font-mono text-[9px] uppercase font-bold tracking-wider">{theme}</span>
           </button>
 
           {/* Divider */}
@@ -153,7 +153,7 @@ export const FloatingNav = ({
 
           {/* User Profile / Auth Action */}
           {user ? (
-            <div className="flex items-center gap-2 px-1">
+            <div className="flex items-center gap-1.5 sm:gap-2 px-0.5 sm:px-1">
               <a 
                 href={`/users/${user.$id}/${slugify(user.name)}`}
                 className="block"
@@ -163,13 +163,13 @@ export const FloatingNav = ({
                   <img
                     src={user.prefs?.profileImage || avatars.getInitials(user.name, 32, 32)}
                     alt={user.name}
-                    className="w-8 h-8 rounded-full border border-indigo-500/40 object-cover hover:border-indigo-400 transition-all duration-200"
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-indigo-500/40 object-cover hover:border-indigo-400 transition-all duration-200"
                   />
                 </picture>
               </a>
               <button 
                 onClick={() => logout()}
-                className="relative flex items-center justify-center p-2 rounded-full border border-red-500/20 bg-red-500/15 text-red-400 hover:bg-red-500 hover:text-white transition-all duration-200 cursor-pointer"
+                className="relative flex items-center justify-center p-1.5 sm:p-2 rounded-full border border-red-500/20 bg-red-500/15 text-red-400 hover:bg-red-500 hover:text-white transition-all duration-200 cursor-pointer"
                 title="Logout"
               >
                 <IconLogout className="w-3.5 h-3.5" />
@@ -178,7 +178,7 @@ export const FloatingNav = ({
           ) : (
             <a
               href="/login"
-              className="relative rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-neutral-800 hover:shadow-lg hover:shadow-neutral-900/20 dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:hover:shadow-white/20"
+              className="relative rounded-full bg-neutral-900 px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-medium text-white transition-all hover:bg-neutral-800 hover:shadow-lg hover:shadow-neutral-900/20 dark:bg-white dark:text-black dark:hover:bg-neutral-100 dark:hover:shadow-white/20"
             >
               <span>Login</span>
             </a>
