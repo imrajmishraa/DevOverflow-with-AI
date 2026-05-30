@@ -5,6 +5,28 @@ import convertDateToRelativeTime from "@/utils/relativeTime";
 import React from "react";
 import EditButton from "./EditButton";
 import Navbar from "./Navbar";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params: paramsPromise,
+}: {
+  params: Promise<{ userId: string; userSlug: string }>;
+}): Promise<Metadata> {
+  const params = await paramsPromise;
+  try {
+    const user = await users.get<UserPrefs>(params.userId);
+    return {
+      title: `${user.name} - Developer Profile - DevOverflow`,
+      description: user.prefs?.bio || `View ${user.name}'s developer reputation, questions, answers, and contributions on DevOverflow.`,
+    };
+  } catch (error) {
+    console.error("Error generating user profile metadata:", error);
+    return {
+      title: "Developer Profile - DevOverflow",
+    };
+  }
+}
+
 import {
   IconClockFilled,
   IconUserFilled,

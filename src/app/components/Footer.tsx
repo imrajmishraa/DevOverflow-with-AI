@@ -38,7 +38,7 @@ const Footer = () => {
             <div>
               <Link href="/" className="inline-flex items-center gap-2">
                 <span className="font-black text-xl tracking-widest text-transparent bg-clip-text bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 hover:opacity-80 transition-all duration-300">
-                  DEV//OVERFLOW
+                  DevOverflow
                 </span>
               </Link>
               <p className="mt-4 text-sm leading-relaxed text-neutral-400 max-w-sm">

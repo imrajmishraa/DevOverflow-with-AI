@@ -26,17 +26,25 @@ const Page = async ({
 
   const answers = await databases.listDocuments(db, answerCollection, queries);
 
-  answers.documents = await Promise.all(
+  const answersWithQuestions = await Promise.all(
     answers.documents.map(async (ans) => {
-      const question = await databases.getDocument(
-        db,
-        questionCollection,
-        ans.questionId,
-        [Query.select(["title"])],
-      );
-      return { ...ans, question };
+      try {
+        const response = await databases.listDocuments(db, questionCollection, [
+          Query.equal("$id", ans.questionId),
+          Query.select(["title"]),
+          Query.limit(1),
+        ]);
+        if (response.documents.length === 0) return null;
+        const question = response.documents[0];
+        return { ...ans, question };
+      } catch (error) {
+        console.error(`Orphaned answer detected for answerId ${ans.$id}:`, error);
+        return null;
+      }
     }),
   );
+
+  answers.documents = answersWithQuestions.filter(Boolean) as any;
 
   return (
     <div className="px-4">

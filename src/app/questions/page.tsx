@@ -10,6 +10,12 @@ import {
   getCachedAnswers,
   getCachedVotes,
 } from "@/utils/cache";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Questions - DevOverflow",
+  description: "Explore developer questions, seek architectural solutions, and share knowledge with our active engineering community.",
+};
 
 const Page = async ({
   searchParams: searchParamsPromise,

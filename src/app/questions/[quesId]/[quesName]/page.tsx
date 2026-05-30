@@ -22,6 +22,32 @@ import {
   getCachedComments,
   getCachedUser,
 } from "@/utils/cache";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params: paramsPromise,
+}: {
+  params: Promise<{ quesId: string; quesName: string }>;
+}): Promise<Metadata> {
+  const params = await paramsPromise;
+  try {
+    const question = await getCachedQuestion(params.quesId);
+    const cleanDescription = (question.content || "")
+      .replace(/[#*`_\[\]()\-]/g, "")
+      .slice(0, 150)
+      .trim();
+
+    return {
+      title: `${question.title} - DevOverflow`,
+      description: cleanDescription || "Read community discussion and AI solutions on DevOverflow.",
+    };
+  } catch (error) {
+    console.error("Error generating question metadata:", error);
+    return {
+      title: "Question Details - DevOverflow",
+    };
+  }
+}
 
 const Page = async ({
   params: paramsPromise,
@@ -103,7 +129,7 @@ const Page = async ({
   const serializedAuthor = JSON.parse(JSON.stringify(author));
 
   return (
-    <TracingBeam className="container pl-6">
+    <TracingBeam className="max-w-6xl pl-6">
       <Particles
         className="fixed inset-0 h-full w-full"
         quantity={500}
@@ -112,20 +138,24 @@ const Page = async ({
         refresh
       />
       <div className="relative mx-auto px-4 pb-20 pt-36">
-        <div className="flex">
-          <div className="w-full">
-            <h1 className="mb-1 text-3xl font-bold">{serializedQuestion.title}</h1>
-            <div className="flex gap-4 text-sm">
+        <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+          <div className="w-full space-y-1">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight tracking-tight">
+              {serializedQuestion.title}
+            </h1>
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs sm:text-sm text-gray-400 font-mono">
               <span>
                 Asked {convertDateToRelativeTime(new Date(serializedQuestion.$createdAt))}
               </span>
+              <span>•</span>
               <span>Answer {serializedAnswers.total}</span>
+              <span>•</span>
               <span>Votes {serializedUpvotes.total + serializedDownvotes.total}</span>
             </div>
           </div>
-          <Link href="/questions/ask" className="ml-auto inline-block shrink-0">
+          <Link href="/questions/ask" className="shrink-0">
             <ShimmerButton className="shadow-2xl">
-              <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
+              <span className="whitespace-pre-wrap text-center text-xs sm:text-sm font-semibold leading-none tracking-tight text-white">
                 Ask a question
               </span>
             </ShimmerButton>
@@ -156,9 +186,9 @@ const Page = async ({
 
           {/* MIDDLE: Question Details Markdown & Conversations */}
           <div className="flex-1 w-full overflow-hidden">
-            <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-6 backdrop-blur-md">
+            <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-4 sm:p-6 backdrop-blur-md">
               <MarkdownPreview
-                className="rounded-xl p-2 bg-transparent"
+                className="rounded-xl p-1 bg-transparent"
                 source={serializedQuestion.content}
               />
               {serializedQuestion.attachmentId && (

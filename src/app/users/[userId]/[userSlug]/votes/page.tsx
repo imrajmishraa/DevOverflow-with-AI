@@ -34,40 +34,50 @@ const Page = async ({
 
   const votes = await databases.listDocuments(db, voteCollection, query);
 
-  votes.documents = await Promise.all(
+  const votesWithDetails = await Promise.all(
     votes.documents.map(async (vote) => {
-      const questionOfTypeQuestion =
-        vote.type === "question"
-          ? await databases.getDocument(db, questionCollection, vote.typeId, [
-              Query.select(["title"]),
-            ])
-          : null;
+      try {
+        if (vote.type === "question") {
+          const response = await databases.listDocuments(db, questionCollection, [
+            Query.equal("$id", vote.typeId),
+            Query.select(["title"]),
+            Query.limit(1),
+          ]);
+          if (response.documents.length === 0) return null;
+          const question = response.documents[0];
+          return {
+            ...vote,
+            question,
+          };
+        } else {
+          const ansResponse = await databases.listDocuments(db, answerCollection, [
+            Query.equal("$id", vote.typeId),
+            Query.limit(1),
+          ]);
+          if (ansResponse.documents.length === 0) return null;
+          const answer = ansResponse.documents[0];
 
-      if (questionOfTypeQuestion) {
-        return {
-          ...vote,
-          question: questionOfTypeQuestion,
-        };
+          const quesResponse = await databases.listDocuments(db, questionCollection, [
+            Query.equal("$id", answer.questionId),
+            Query.select(["title"]),
+            Query.limit(1),
+          ]);
+          if (quesResponse.documents.length === 0) return null;
+          const question = quesResponse.documents[0];
+
+          return {
+            ...vote,
+            question,
+          };
+        }
+      } catch (error) {
+        console.error(`Orphaned vote reference detected for voteId ${vote.$id}:`, error);
+        return null;
       }
-
-      const answer = await databases.getDocument(
-        db,
-        answerCollection,
-        vote.typeId,
-      );
-      const questionOfTypeAnswer = await databases.getDocument(
-        db,
-        questionCollection,
-        answer.questionId,
-        [Query.select(["title"])],
-      );
-
-      return {
-        ...vote,
-        question: questionOfTypeAnswer,
-      };
     }),
   );
+
+  votes.documents = votesWithDetails.filter(Boolean) as any;
 
   return (
     <div className="px-4 space-y-6">
