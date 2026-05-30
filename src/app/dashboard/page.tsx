@@ -112,7 +112,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Controls: Shortcuts Guide & Navigation Tabs */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-start md:justify-end">
             <button
               onClick={() => setShowShortcutHelp(true)}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 text-xs font-mono text-gray-400 hover:text-white transition-all cursor-pointer"
