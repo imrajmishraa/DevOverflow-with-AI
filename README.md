@@ -4,7 +4,6 @@
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-devstack.appwrite.network-blue?style=for-the-badge)](https://devstack.appwrite.network)
 [![TypeScript](https://img.shields.io/badge/TypeScript-98%25-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![React](https://img.shields.io/badge/React-19.2-61dafb?style=for-the-badge&logo=react)](https://react.dev/)
 [![Next.js](https://img.shields.io/badge/Next.js-16.1-000000?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
 
@@ -332,7 +331,7 @@ Contributions are welcome! Please follow these steps:
 
 1. **Fork the repository**
 ```bash
-git clone https://github.com/YOUR-USERNAME/DevStack-with-AI.git
+git clone https://github.com/Dev-rajmishra/DevStack-with-AI.git
 cd DevStack-with-AI
 ```
 
