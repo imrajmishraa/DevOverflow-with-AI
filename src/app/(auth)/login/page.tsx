@@ -60,17 +60,17 @@ export default function Login() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-md rounded-none border border-solid border-white/30 bg-white p-4 mt-10 shadow-input dark:bg-black md:rounded-2xl md:p-8">
-      <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
-        Login to Riverflow
+    <div className="mx-auto w-full max-w-md rounded-none border border-solid border-white/30 bg-white p-4 shadow-input dark:bg-black md:rounded-2xl md:p-8">
+      <h2 className="text-xl font-bold mt-20 text-neutral-800 dark:text-neutral-200">
+        Login to DevOverFlow
       </h2>
       <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
-        Login to riverflow
+        Login to DevOverFlow
         <br /> If you don&apos;t have an account,{" "}
         <Link href="/register" className="text-orange-500 hover:underline">
           register
         </Link>{" "}
-        with riverflow
+        with DevOverFlow
       </p>
 
       {error && (
@@ -82,7 +82,7 @@ export default function Login() {
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
           <Input
-            className="text-black"
+            className="text-white"
             id="email"
             name="email"
             placeholder="projectmayhem@fc.com"
@@ -92,7 +92,7 @@ export default function Login() {
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Password</Label>
           <Input
-            className="text-black"
+            className="text-white"
             id="password"
             name="password"
             placeholder="••••••••"
