@@ -4,7 +4,7 @@
  */
 export async function uploadToCloudinary(file: File, shorten = false): Promise<string> {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME; // Sandbox cloud name fallback
-  const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET; // Unsigned preset fallback
+  const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET || "DevStackOverflow"; // Unsigned preset fallback
 
   const formData = new FormData();
   formData.append("file", file);
