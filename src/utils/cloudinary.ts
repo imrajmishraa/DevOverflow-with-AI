@@ -3,7 +3,7 @@
  * Securely uploads images from the browser directly to Cloudinary.
  */
 export async function uploadToCloudinary(file: File, shorten = false): Promise<string> {
-  const cloudName = process.env.CLOUDINARY_CLOUD_NAME. // Sandbox cloud name fallback
+  const cloudName = process.env.CLOUDINARY_CLOUD_NAME; // Sandbox cloud name fallback
   const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET; // Unsigned preset fallback
 
   const formData = new FormData();
