@@ -10,7 +10,7 @@ class GeminiService {
   limiter: Bottleneck;
 
   constructor() {
-    this.modelName = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+    this.modelName = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 
     // Bottleneck logic: Only allow 2 requests per second
     this.limiter = new Bottleneck({
