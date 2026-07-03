@@ -31,9 +31,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col md:flex-row bg-black text-white font-sans mt-10 overflow-hidden">
+    <div className="relative min-h-screen w-full flex flex-col md:flex-row bg-black text-white font-sans overflow-hidden">
       {/* LEFT PANEL: Clean Glassmorphic Auth Form */}
-      <div className="relative flex flex-col justify-center items-center w-full md:w-1/2 min-h-screen p-8 z-20">
+      <div className="relative flex flex-col mt-10 justify-center items-center w-full md:w-1/2 min-h-screen p-8 z-20">
         <BackgroundBeams />
 
         {/* Decorative Top Glow */}
@@ -54,8 +54,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* RIGHT PANEL: Interactive Developer Visual Showcase (hidden on mobile) */}
       <div className="relative hidden md:flex flex-col justify-center items-center w-1/2 min-h-screen bg-slate-950 border-l border-white/10 p-12 overflow-hidden">
         {/* Glow Effects */}
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute top-1/4 left-1/3 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-125 h-125 bg-purple-500/10 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/3 w-75 h-75 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
 
         {/* Interactive Visual Console */}
         <motion.div
@@ -126,7 +126,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 animate={{ opacity: 1 }}
                 className="text-gray-300 border border-white/10 bg-white/5 rounded-lg p-3 my-2 leading-relaxed"
               >
-                <span className="text-orange-400 font-bold block mb-1 flex items-center gap-1">
+                <span className="text-orange-400 font-bold block mb-1 items-center gap-1">
                   <IconSparkles className="w-4 h-4" /> Global Platform Telemetry
                 </span>
                 Active Developers Online:{" "}
