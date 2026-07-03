@@ -4,7 +4,6 @@ import React from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
 import { useAuthStore } from "@/store/Auth";
 import Link from "next/link";
 
@@ -73,17 +72,11 @@ export default function Register() {
 
   return (
     <div className="mx-auto w-full max-w-md rounded-none border border-solid border-white/30 bg-white p-4 shadow-input dark:bg-black md:rounded-2xl md:p-8">
-      <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
+      <h2 className="text-xl text-center font-bold text-neutral-800 dark:text-neutral-200">
         Welcome to DevOverFlow
       </h2>
-      <p className="mt-2 max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
-        Signup with DevOverFlow if you you don&apos;t have an account.
-        <br /> If you already have an account,{" "}
-        <Link href="/login" className="text-orange-500 hover:underline">
-          login
-        </Link>{" "}
-        to DevOverFlow
-      </p>
+
+      <div className="my-8 h-px w-full bg-linear-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
 
       {error && (
         <p className="mt-8 text-center text-sm text-red-500 dark:text-red-400">
@@ -98,7 +91,7 @@ export default function Register() {
               className="text-black"
               id="firstname"
               name="firstname"
-              placeholder="Tyler"
+              placeholder="John"
               type="text"
             />
           </LabelInputContainer>
@@ -108,22 +101,22 @@ export default function Register() {
               className="text-black"
               id="lastname"
               name="lastname"
-              placeholder="Durden"
+              placeholder="Wick"
               type="text"
             />
           </LabelInputContainer>
         </div>
-        <LabelInputContainer className="mb-4">
+        <LabelInputContainer className="mb-5">
           <Label htmlFor="email">Email Address</Label>
           <Input
             className="text-white"
             id="email"
             name="email"
-            placeholder="projectmayhem@fc.com"
+            placeholder="iamjohn@gmail.com"
             type="email"
           />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
+        <LabelInputContainer className="mb-8">
           <Label htmlFor="password">Password</Label>
           <Input
             className="text-white"
@@ -143,32 +136,15 @@ export default function Register() {
           <BottomGradient />
         </button>
 
-        <div className="my-8 h-0.25 w-full bg-linear-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
+        <div className="my-4 h-px w-full bg-linear-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
 
-        <div className="flex flex-col space-y-4">
-          <button
-            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black shadow-input dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
-            type="button"
-            disabled={isLoading}
-          >
-            <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-            <span className="text-sm text-neutral-700 dark:text-neutral-300">
-              Google
-            </span>
-            <BottomGradient />
-          </button>
-          <button
-            className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black shadow-input dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
-            type="button"
-            disabled={isLoading}
-          >
-            <IconBrandGithub className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-            <span className="text-sm text-neutral-700 dark:text-neutral-300">
-              GitHub
-            </span>
-            <BottomGradient />
-          </button>
-        </div>
+        <p className="max-w-sm text-sm text-neutral-600 dark:text-neutral-300">
+          <br /> If you already have an account,{" "}
+          <Link href="/login" className="text-orange-500 hover:underline">
+            Login
+          </Link>{" "}
+          to DevOverFlow
+        </p>
       </form>
     </div>
   );
