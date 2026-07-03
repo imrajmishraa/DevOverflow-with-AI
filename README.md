@@ -2,7 +2,7 @@
 
 > **Where Developers Overflow with Knowledge** — A premium next-generation developer ecosystem combining Q&A, gamified reputation, and AI-powered code optimization.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-devoverflow-with-ai.onrender.com-blue?style=for-the-badge)](https://devoverflow-with-ai.onrender.com)
+[![Live Demo](https://img.shields.io/badge/Live-blue?style=for-the-badge)](https://devoverflow-with-ai.onrender.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-98%25-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.2-61dafb?style=for-the-badge&logo=react)](https://react.dev/)
 [![Next.js](https://img.shields.io/badge/Next.js-16.1-000000?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
