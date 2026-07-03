@@ -2,7 +2,7 @@
 
 > **Where Developers Overflow with Knowledge** — A premium next-generation developer ecosystem combining Q&A, gamified reputation, and AI-powered code optimization.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-devstack.appwrite.network-blue?style=for-the-badge)](https://devstack.appwrite.network)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-devstack.appwrite.network-blue?style=for-the-badge)](https://devoverflow-with-ai.onrender.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-98%25-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.2-61dafb?style=for-the-badge&logo=react)](https://react.dev/)
 [![Next.js](https://img.shields.io/badge/Next.js-16.1-000000?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
@@ -48,7 +48,7 @@ Built with **Next.js 16**, **React 19**, **TypeScript**, and powered by **Appwri
 - **Leaderboards**: Compete and showcase expertise across the community
 
 ### 🤖 Integrated AI Code & Community Companion
-- **Google Gemini Integration**: Dynamic, dual-mode AI engine utilizing the latest `"gemini-2.0-flash"` model.
+- **Google Gemini Integration**: Dynamic, dual-mode AI engine utilizing the latest `"gemini-2.5-flash"` model.
 - **Failover Key Rotation**: Automatically rotates across up to 3 API keys (`GEMINI_API_KEY_1`, `GEMINI_API_KEY_2`, `GEMINI_API_KEY_3`) under 429 quota exhaustion errors to guarantee continuous operational up-time.
 - **Congestion Rate Limiting**: Integrates `bottleneck` rate-limiting (2 req/s) to shield keys from congestion rate-limits during high traffic.
 - **AI Title & Question Optimizer**: Generates technical, searchable question titles and restructures text drafts into gorgeous formatted Markdown sections.
@@ -114,7 +114,7 @@ Built with **Next.js 16**, **React 19**, **TypeScript**, and powered by **Appwri
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/Rajmishra-2125/DevStack-with-AI.git
+git clone https://github.com/imrajmishraa/DevStack-with-AI.git
 cd DevStack-with-AI
 ```
 
@@ -135,10 +135,8 @@ cp .env.example .env.local
 4. **Set up environment variables**
 ```env
 # Appwrite Configuration
-NEXT_PUBLIC_APPWRITE_HOST_URL=your_appwrite_endpoint
-APPWRITE_HOST_URL=your_appwrite_endpoint
+NEXT_PUBLIC_APPWRITE_ENDPOINT_URL=your_appwrite_endpoint
 NEXT_PUBLIC_APPWRITE_PROJECT_ID=your_project_id
-APPWRITE_PROJECT_ID=your_project_id
 APPWRITE_API_KEY=your_api_key
 
 # Gemini AI Service Configuration (Active Failover rotation keys)
@@ -146,7 +144,12 @@ GEMINI_API_KEY=your_default_gemini_key
 GEMINI_API_KEY_1=your_first_rotation_key
 GEMINI_API_KEY_2=your_second_rotation_key
 GEMINI_API_KEY_3=your_third_rotation_key
-GEMINI_MODEL=gemini-2.0-flash
+GEMINI_MODEL=gemini-2.5-flash
+
+# Cloudinary Service Configuration (To Upload Images)
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=your_cloudinary_upload_preset
+
 ```
 
 5. **Run the development server**
@@ -267,7 +270,7 @@ Content-Type: application/json
 ### Appwrite Setup
 
 1. **Create Appwrite Project**
-   - Project ID for `APPWRITE_PROJECT_ID`
+   - Project ID for `NEXT_PUBLIC_APPWRITE_PROJECT_ID`
    - Generate API Key for `APPWRITE_API_KEY`
 
 2. **Database Collections**
@@ -331,7 +334,7 @@ Contributions are welcome! Please follow these steps:
 
 1. **Fork the repository**
 ```bash
-git clone https://github.com/Dev-rajmishra/DevStack-with-AI.git
+git clone https://github.com/imrajmishraa/DevStack-with-AI.git
 cd DevStack-with-AI
 ```
 
@@ -360,19 +363,13 @@ git push origin feature/amazing-feature
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 🆘 Support
 
 ### Getting Help
 
-- 📖 [Live Demo](https://devstack.appwrite.network)
-- 🐛 [Report Issues](https://github.com/Rajmishra-2125/DevStack-with-AI/issues)
-- 💬 [GitHub Discussions](https://github.com/Rajmishra-2125/DevStack-with-AI/discussions)
+- 📖 [Live Demo](https://devoverflow-with-ai.onrender.com)
+- 🐛 [Report Issues](https://github.com/imrajmishraa/DevStack-with-AI/issues)
+- 💬 [GitHub Discussions](https://github.com/imrajmishraa/DevStack-with-AI/discussions)
 
 ### Documentation
 - [Next.js Documentation](https://nextjs.org/docs)
@@ -404,7 +401,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-**[🚀 Try DevOverflow Now](https://devstack.appwrite.network)** | **[⭐ Star on GitHub](https://github.com/Rajmishra-2125/DevStack-with-AI)** | **[📧 Contact](mailto:your-email@example.com)**
+**[🚀 Try DevOverflow Now](https://devoverflow-with-ai.onrender.com)** | **[⭐ Star on GitHub](https://github.com/imrajmishraa/DevStack-with-AI)** | **[📧 Contact](mailto:raj212558@email.com)**
 
 Made with ❤️ by **Raj Mishra** | Contributions welcome! 🎉
 
